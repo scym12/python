@@ -23,6 +23,6 @@ class ArticleSpider(CrawlSpider):
         article['url'] = response.url
         article['title'] = response.css('h1::text').get()
         article['text'] = response.xpath('//div[@id="mw-content-text"]//text()').getall()
-        lastUpdated = response.css('li#footer-info-lastmo::text').get()
+        lastUpdated = response.css('li#footer-info-lastmod::text').get()
         article['lastUpdated'] = lastUpdated.replace('This page was last edited on ', '')
         return article
